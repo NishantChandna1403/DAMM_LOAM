@@ -1,6 +1,8 @@
 {
-    "name": "Husky Development on AMD64/x86",
-    "image": "ghcr.io/rtarun1/husky_base:v1.0",
+    "name": "DAMM_LOAM",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
     "privileged": true,
     "workspaceMount": "source=${localWorkspaceFolder},target=/home/container_user/catkin_ws/src,type=bind",
     "workspaceFolder": "/home/container_user/catkin_ws/src",
@@ -13,7 +15,7 @@
                     "reloadButton": "♻️",
                     "commands": [
                         {
-                            "name": "Build WS",
+                            "name": "DAMM_LOAM",
                             "cwd": "/home/container_user/catkin_ws",
                             "color": "green",
                             "singleInstance": true,
@@ -47,10 +49,15 @@
         "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
         "PULSE_SERVER": "${localEnv:PULSE_SERVER}",
         "QT_X11_NO_MITSHM": "1",
-        "LIBGL_ALWAYS_SOFTWARE": "1"
+        "LIBGL_ALWAYS_SOFTWARE": "1",
+        "NVIDIA_DRIVER_CAPABILITIES": "all",
+        "NVIDIA_VISIBLE_DEVICES": "all",
+        "ROS_DISTRO": "humble"
+        
+        
     },
     "runArgs": [
-        // "--gpus=all",
+        "--gpus=all",
         "--cap-add=SYS_NICE",
         "--ulimit=rtprio=99",
         "--ulimit=rttime=-1",

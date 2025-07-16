@@ -25,7 +25,7 @@
 #include <Eigen/Core>
 #include <tuple>
 #include <vector>
-#include <ros/ros.h>
+
 
 #include "genz_icp/core/Deskew.hpp"
 #include "genz_icp/core/Preprocessing.hpp"
@@ -69,10 +69,6 @@ GenZICP::Vector3dVectorTuple GenZICP::RegisterFrame(const std::vector<Eigen::Vec
     const auto cropped_edge = Preprocess(deskew_edge, config_.max_range, config_.min_range);
     const auto cropped_non_planar = Preprocess(deskew_non_planar, config_.max_range, config_.min_range);
 
-    // Log classification results for debugging
-    ROS_DEBUG("Input points: Ground=%zu, Roof=%zu, Wall=%zu, Edge=%zu, Non-planar=%zu",
-             cropped_ground.size(), cropped_roof.size(), cropped_wall.size(), cropped_edge.size(), cropped_non_planar.size());
-
     // Combine all points for adaptive voxel size calculation
     std::vector<Eigen::Vector3d> combined_frame;
     combined_frame.reserve(cropped_ground.size() + cropped_roof.size() + cropped_wall.size() + 
@@ -94,11 +90,6 @@ GenZICP::Vector3dVectorTuple GenZICP::RegisterFrame(const std::vector<Eigen::Vec
     const auto downsampled_wall = genz_icp::VoxelDownsample(cropped_wall, std::max(adaptive_voxel_size, 0.02));
     const auto downsampled_edge = genz_icp::VoxelDownsample(cropped_edge, std::max(0.7, 0.02));
     const auto downsampled_non_planar = genz_icp::VoxelDownsample(cropped_non_planar, std::max(0.7, 0.02));
-
-    // Log downsampled sizes for debugging
-    ROS_DEBUG("Downsampled points: Ground=%zu, Roof=%zu, Wall=%zu, Edge=%zu, Non-planar=%zu",
-             downsampled_ground.size(), downsampled_roof.size(), downsampled_wall.size(), 
-             downsampled_edge.size(), downsampled_non_planar.size());
 
     // Voxelize combined frame for local map update
     const auto frame_downsample = genz_icp::VoxelDownsample(combined_frame, std::max(adaptive_voxel_size * 0.5, 0.02));
