@@ -62,7 +62,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /damm-/ground_points
+      Topic: /damm_loam/ground_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -90,7 +90,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /damm-/roof_points
+      Topic: /damm_loam/roof_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -118,7 +118,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /damm-/wall_points
+      Topic: /damm_loam/wall_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -146,7 +146,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /damm-/edge_points
+      Topic: /damm_loam/edge_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -174,7 +174,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.009999999776482582
       Style: Points
-      Topic: /damm-/non_planar_points
+      Topic: /damm_loam/non_planar_points
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -202,7 +202,7 @@ Visualization Manager:
       Size (Pixels): 1
       Size (m): 0.10000000149011612
       Style: Points
-      Topic: /damm-/local_map
+      Topic: /damm_loam/local_map
       Unreliable: true
       Use Fixed Frame: true
       Use rainbow: true
@@ -237,7 +237,7 @@ Visualization Manager:
       Radius: 0.20000000298023224
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /damm-/trajectory
+      Topic: /damm_loam/trajectory
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -272,7 +272,7 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Axes
-      Topic: /damm-/odometry
+      Topic: /damm_loam/odometry
       Unreliable: false
       Value: true
   Enabled: true

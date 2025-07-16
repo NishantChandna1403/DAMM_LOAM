@@ -199,7 +199,7 @@ void OdometryServer::RegisterFrame(const sensor_msgs::msg::PointCloud2::ConstSha
     const auto pose = [&]() -> Sophus::SE3d {
         if (egocentric_estimation) return damm_pose;
         const Sophus::SE3d cloud2base = LookupTransform(base_frame_, cloud_frame_id);
-        return cloud2base * damm-_pose * cloud2base.inverse();
+        return cloud2base * damm_pose * cloud2base.inverse();
     }();
 
     // Spit the current estimated pose to ROS msgs
@@ -248,7 +248,7 @@ void OdometryServer::PublishClouds(const rclcpp::Time &stamp,
     odom_header.frame_id = odom_frame_;
 
     // Publish map
-    const auto damm-_map = odometry_.LocalMap();
+    const auto damm_map = odometry_.LocalMap();
 
     if (!publish_odom_tf_) {
         // debugging happens in an egocentric world
@@ -256,7 +256,7 @@ void OdometryServer::PublishClouds(const rclcpp::Time &stamp,
         cloud_header.stamp = stamp;
         cloud_header.frame_id = cloud_frame_id;
 
-        map_publisher_->publish(std::move(EigenToPointCloud2(damm-_map, odom_header)));
+        map_publisher_->publish(std::move(EigenToPointCloud2(damm_map, odom_header)));
         planar_points_publisher_->publish(std::move(EigenToPointCloud2(planar_points, cloud_header)));
         non_planar_points_publisher_->publish(std::move(EigenToPointCloud2(non_planar_points, cloud_header)));
 
@@ -270,9 +270,9 @@ void OdometryServer::PublishClouds(const rclcpp::Time &stamp,
 
     if (!base_frame_.empty()) {
         const Sophus::SE3d cloud2base = LookupTransform(base_frame_, cloud_frame_id);
-        map_publisher_->publish(std::move(EigenToPointCloud2(damm-_map, cloud2base, odom_header)));
+        map_publisher_->publish(std::move(EigenToPointCloud2(damm_map, cloud2base, odom_header)));
     } else {
-        map_publisher_->publish(std::move(EigenToPointCloud2(damm-_map, odom_header)));
+        map_publisher_->publish(std::move(EigenToPointCloud2(damm_map, odom_header)));
     }
 }
 }  // namespace damm_loam_ros
