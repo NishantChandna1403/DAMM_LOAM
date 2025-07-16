@@ -1,0 +1,46 @@
+nv_liom:
+  lidar_type: 2 #0: Ouster ,1: Hesai, 2: VelodyneXYZIRT, 3:VelodyneXYZI
+  lidarTopic: "/velodyne_points"
+  horizontal_pixel_num: 1024
+  vertical_pixel_num: 16
+  horizontal_fov: 360.0
+  vertical_max: 15.0
+  vertical_min: -15.0
+  minimum_distance: 0.5
+  maximum_distance: 200.0
+  mapping_voxel_size: 0.2
+  mapping_range: 5.0
+  mapping_closest_range: 0.5
+  mapping_node_distance: 0.2
+  mapping_save_dir: "/home/dongha/maps/Multifloor"
+  mapping_in_rgb: 1
+  submap_size: 10
+  show_img: 1
+  gravity: 9.8
+  record_time: 0
+  deskew: 1
+  min_intensity: 0
+  normal_neighbor: 1
+
+  visualization_voxel_size: 0.2
+  visaulization_node_skip: 5
+
+
+  # SubT_MRS_Hawkins_Multifloor
+  lidar_to_imu_R: [0.999945562, 0.009074807,  0.005149763,
+                   -0.009060897, 0.999955255, -0.002718066,
+                   -0.005174199, 0.002671256,  0.999983046,]
+  lidar_to_imu_t: [0.080000000, 0.029000000, 0.030000000]
+
+  initial_pose: [1, 0, 0, 0,
+                 0, 1, 0, 0,
+                 0, 0, 1, 0,
+                 0, 0, 0, 1]
+
+  imuAccNoise: 3.9939570888238808e-02
+  imuGyrNoise: 1.5636343949698187e-03
+  imuAccBiasN: 6.4356659353532566e-05
+  imuGyrBiasN: 3.5640318696367613e-05
+
+  correctionNoiseTrans: 0.01
+  correctionNoiseAng: 0.001
