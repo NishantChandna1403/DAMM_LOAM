@@ -20,9 +20,8 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-add_library(pipeline STATIC)
-add_library(damm_loam::pipeline ALIAS pipeline)
-target_sources(pipeline PRIVATE damm-ICP.cpp)
-target_link_libraries(pipeline PUBLIC damm_loam::core)
-set_global_target_properties(pipeline)
+add_library(core STATIC)
+add_library(damm_loam::core ALIAS core)
+target_sources(core PRIVATE Registration.cpp Deskew.cpp VoxelHashMap.cpp Preprocessing.cpp Threshold.cpp)
+target_link_libraries(core PUBLIC Eigen3::Eigen tsl::robin_map TBB::tbb Sophus::Sophus)
+set_global_target_properties(core)

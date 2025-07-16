@@ -23,6 +23,6 @@
 
 add_library(pipeline STATIC)
 add_library(damm_loam::pipeline ALIAS pipeline)
-target_sources(pipeline PRIVATE damm-ICP.cpp)
+target_sources(pipeline PRIVATE damm_loam.cpp)
 target_link_libraries(pipeline PUBLIC damm_loam::core)
 set_global_target_properties(pipeline)
