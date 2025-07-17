@@ -171,11 +171,11 @@ PointClass classifyPixel(int u, int v, const pcl::PointCloud<PointsWithNormals>:
 // Get color for classification visualization (BGR for OpenCV images)
 cv::Vec3b getClassificationColor(PointClass cls) {
     switch(cls) {
-        case GROUND:     return cv::Vec3b(42, 82, 165);   // Brown (BGR) - wood-like brown
-        case ROOF:       return cv::Vec3b(255, 0, 0);     // Blue (BGR) 
-        case WALL:       return cv::Vec3b(255, 0, 255);   // Magenta (BGR)
-        case EDGE:       return cv::Vec3b(255, 255, 173); // Light blue (BGR)
-        default:         return cv::Vec3b(0, 0, 0);       // Black (BGR)
+        case GROUND:     return cv::Vec3b(100, 160, 200);  // Slightly lighter brown (BGR)
+        case ROOF:       return cv::Vec3b(255, 255, 255);  // Hard white (BGR) - maximum distinction
+        case WALL:       return cv::Vec3b(180, 200, 200);  // Darker cream (BGR)
+        case EDGE:       return cv::Vec3b(19, 42, 87);     // Brown (BGR) - reverted to earlier
+        default:         return cv::Vec3b(0, 0, 0);        // Black (BGR)
     }
 }
 
@@ -183,10 +183,10 @@ cv::Vec3b getClassificationColor(PointClass cls) {
 uint32_t getClassificationColorRGB(PointClass cls) {
     uint8_t r, g, b;
     switch(cls) {
-        case GROUND:     r = 165; g = 82; b = 42; break;   // Brown (RGB) - wood-like brown
-        case ROOF:       r = 0; g = 0; b = 255; break;     // Blue (RGB)
-        case WALL:       r = 255; g = 0; b = 255; break;   // Magenta (RGB)
-        case EDGE:       r = 173; g = 255; b = 255; break; // Light blue (RGB)
+        case GROUND:     r = 200; g = 160; b = 100; break; // Slightly lighter brown (RGB)
+        case ROOF:       r = 200; g = 200; b = 200; break;    // Dark blue (RGB) - more distinct
+        case WALL:       r = 200; g = 200; b = 180; break; // Darker cream (RGB)
+        case EDGE:       r = 87; g = 42; b = 19; break;    // Brown (RGB) - reverted to earlier
         default:         r = 0; g = 0; b = 0; break;       // Black (RGB)
     }
     // Pack RGB into 32-bit value (standard PCL format)
