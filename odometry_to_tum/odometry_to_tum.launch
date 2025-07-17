@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch the odometry to TUM converter node -->
+  <node pkg="odometry_to_tum" 
+        type="odometry_to_tum.py" 
+        name="odometry_to_tum" 
+        output="screen">
+    
+    <!-- Remap the input topic if needed -->
+    <!-- <remap from="/genz/odometry" to="/your_robot/odometry"/> -->
+    
+  </node>
+</launch>
